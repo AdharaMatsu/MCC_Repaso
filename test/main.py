@@ -1,6 +1,11 @@
 import random as rnd
 
-#rnd.seed(10)
+matrix = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+rnd.seed(10)
 n = int(input())
 matriz = []
 vueltas = int(input())
@@ -20,6 +25,6 @@ while vueltas > 0:
     else: # Exito
         matriz[x][y] = opcion + 2.2
 
-        
+
     vueltas -= 1
 
