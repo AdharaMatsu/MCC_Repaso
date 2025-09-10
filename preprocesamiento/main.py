@@ -1,22 +1,18 @@
 import csv
+
+def toInt(set):
+    for item in range(len(set)):
+        for j in range(len(set[item])):
+            set[item][j] = int(set[item][j])
+    return set
+
 lista = []
-with open('tenis.csv', 'r', encoding='utf-8') as f:
+with open('tenis_procesado.csv', 'r', encoding='utf-8') as f:
     read = csv.reader(f)
     for fila in read:
-        #print(fila)
-        lista.append(fila[1:])
+        lista.append((fila[1:]))
 
-for i in range(1, len(lista)):
-    if lista[i][1] == 'Sol':
-        lista[i][1] = 1
-    elif lista[i][1] == 'Nubes':
-        lista[i][1] = 2
-    elif lista[i][1] == 'Lluvia':
-        lista[i][1] = 3
-for e in lista:
-    print(e)
+header = lista.pop(0)
 
-print()
-print(lista[1][0])
-#print(lista[0])
-#print(lista[1][1])
+for e in range(0, len(lista)):
+    print(lista[e])
