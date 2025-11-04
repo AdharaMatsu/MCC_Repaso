@@ -1,10 +1,10 @@
 import csv
 
-def toInt(set):
-    for item in range(len(set)):
-        for j in range(len(set[item])):
-            set[item][j] = int(set[item][j])
-    return set
+def toInt(dataset):
+    for item in range(len(dataset)):
+        for j in range(len(dataset[item])):
+            dataset[item][j] = int(dataset[item][j])
+    return dataset
 
 lista = []
 with open('Casa de Hogwarts.csv', 'r', encoding='utf-8') as f:
@@ -22,15 +22,19 @@ for fila in lista:
 lista = toInt(lista)
 
 caso1 = [35,28,90,33,43,11,37,59]
-#caso1 = [28,10,25,82,50,39,60,1]
-#caso1 = [6,3,5,9,7,30,55,77,2]
-# Manhattan
+print('Clasificador de casa: \n')
+print('En escala del 1 al 100%, escriba su:')
+
+caso = []
+for fila in range(len(header)-1):
+    print('Nivel de ',header[fila])
+    caso.append(int(input()))
 
 for fila in range(len(lista)):
     j = 0
     sumatoria = 0
     for columna in range(len(lista[fila])-1):
-        sumatoria += abs(lista[fila][columna]-caso1[j])
+        sumatoria += abs(lista[fila][columna]-caso[j])
         j = j + 1
     # Cambia los valores
     lista[fila].append(sumatoria)
@@ -47,7 +51,6 @@ ordenada = sorted(lista, key=lambda x: x[-1])
 
 seleccion = ordenada[:k]
 clases = [fila[-2] for fila in seleccion]
-print(clases)
 maximo = max(clases, key=clases.count)
 for c in casas:
     if casas[c] == maximo:
