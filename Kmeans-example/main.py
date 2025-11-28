@@ -6,7 +6,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_excel('dataset.xlsx')
+df = pd.read_csv('temp.csv')
 X = df.select_dtypes(include='number')
 
 scaler = StandardScaler()
@@ -32,7 +32,7 @@ fig_elbow = px.line(
 fig_elbow.update_layout(width=700, height=450, title_x=0.5)
 fig_elbow.show()
 
-kmeans = KMeans(n_clusters=6, random_state=42)
+kmeans = KMeans(n_clusters=3, random_state=42)
 kmeans.fit(X_scaled)
 
 df['cluster'] = kmeans.labels_
@@ -46,4 +46,4 @@ sns.scatterplot(data=df, x=X.columns[0], y=X.columns[1], hue="cluster", palette=
 plt.title("Clusters con K-Means (K=5)")
 #plt.show()
 
-df.to_csv('resultados.csv', index=False)
+df.to_csv('resultados1.csv', index=False)
